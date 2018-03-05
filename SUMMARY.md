@@ -11,8 +11,8 @@
 
 ## 管理员手册
 
-* 入门指导
-* 集群管理
+* [入门指导](guan-li-yuan-shou-ce/ru-men-zhi-dao.md)
+* [集群管理](guan-li-yuan-shou-ce/ji-qun-guan-li.md)
 
 ## part
 
