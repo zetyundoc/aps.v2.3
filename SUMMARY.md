@@ -1,6 +1,6 @@
 # Summary
 
-* [DataCanvas APS V2.3 Product Documentation](README.md)
+* [DataCanvas APS V2.3产品文档](README.md)
 
 ## 技术白皮书
 
