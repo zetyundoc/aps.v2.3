@@ -4,7 +4,7 @@
 操作系统兼容性：大数据服务器的操作系统对Linux内核版本2.6以上版本全面支持。例如发行版CentOS6.5、SUSE11SP2以上版本。
 <table>
    <tr>
-      <td colspan="5">系统硬件推荐配置表</td>
+      <td colspan="5" >系统硬件推荐配置表</td>
    </tr>
    <tr>
       <td>每天日志量</td>
