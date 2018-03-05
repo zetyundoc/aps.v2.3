@@ -6,6 +6,6 @@
 * [产品概要](white_paper/product_outline.md)
 * [产品功能与特性](white_paper/functions_and_features.md)
 * [系统性能](white_paper/system_performance.md)
-* 系统配置
-* 经典案例
+* [系统配置](white_paper/system_configuration.md)
+* [经典案例](white_paper/classic_cases.md)
 
