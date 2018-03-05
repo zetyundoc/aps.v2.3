@@ -22,3 +22,9 @@
 
 ## 用户手册
 
+* [用户手册](user_guide.md)
+  * [快速入门](user_guide/quick_start.md)
+  * [分析应用](user_guide/analysis_app.md)
+  * [用户中心](user_guide/user_center.md)
+  * [数据应用示例](user_guide/user_case.md)
+
