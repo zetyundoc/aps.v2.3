@@ -9,3 +9,10 @@
   * [经典案例](white_paper/classic_cases.md)
   * [系统配置](white_paper/system_configuration.md)
 
+## 管理员手册
+
+* 入门指导
+* 集群管理
+
+## part
+
