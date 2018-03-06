@@ -15,7 +15,7 @@
 ## 管理员手册
 
 * [管理员手册](admin_guide.md)
-  * [入门指导](admin_guide/quick_start.md)
+  * [快速入门](admin_guide/quick_start.md)
   * [集群管理](admin_guide/cluster_management.md)
   * [分析应用](admin_guide/analysis_app.md)
   * [用户中心](admin_guide/user_center.md)
