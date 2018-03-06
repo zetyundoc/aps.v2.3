@@ -754,12 +754,20 @@ Zeppelin为其每个用户都创建了一个后端用户，用户名为“AD_<Ze
         stock_type string,
         trans_time string,
         price double,
-up_or_down_price double,
-trans_count bigint,
-trans_nmoney bigint,
-trans_type string
-)
-PARTITIONED BY(dt String) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',';
+        up_or_down_price double,
+        trans_count bigint,
+        trans_nmoney bigint,
+        trans_type string
+        )
+        PARTITIONED BY(dt String) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',';
+3. 新建一个段落，并输入如下代码，将HDFS中的数据文件加载到已创建的Hive表中，并进行查看：
+
+        %hive
+        LOAD DATA INPATH '/tmp/stock_data.csv' INTO TABLE             zet.stock_everydate_detail4  PARTITION (dt='201312');
+use zet;
+
+select * from zet.stock_everydate_detail4 limit 10;
+
 
 
 
