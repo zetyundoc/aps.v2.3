@@ -474,8 +474,17 @@
 * 读取HDFS的Python代码示例
     - 场景说明：在Python中，可以使用OS模块来执行操作系统命令，从而完成对HDFS上文件的读取操作。
     - 代码样例：
-          
+          import os
+          import json
+          def main(params, inputs, outputs):
+          with open(inputs.input, 'r') as f:
+               a = json.loads(f.read())
+               url = a.get("URL")
+               path = url[len(("/").join(url.split("/")[0:3])):]
+               print path
+             os.system("hdfs dsf -copyToLocal %s %s" %(path,outputs.output))
 
+          说明：上述代码在执行时将HDFS中的文件拷贝到output中。
 
 
 
