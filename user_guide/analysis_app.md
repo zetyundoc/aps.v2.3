@@ -484,7 +484,7 @@
                print path
              os.system("hdfs dsf -copyToLocal %s %s" %(path,outputs.output))
 
-          说明：上述代码在执行时将HDFS中的文件拷贝到output中。
+       说明：上述代码在执行时将HDFS中的文件拷贝到output中。
 
 
 
