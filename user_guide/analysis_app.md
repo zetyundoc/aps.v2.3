@@ -685,6 +685,8 @@ Zeppelin为每个用户提供了默认的Python执行环境，当默认Python环
               4|24|M|technician|43537
               5|33|F|other|15213
 
+#### 上传并查看文件
+Zeppelin为其每个用户都创建了一个后端用户，用户名为“AD_<Zeppelin用户名>”，工作目录为/home/用户名，文件上传目录为“/home/用户名/data/upload”。
 
 
 
