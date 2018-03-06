@@ -302,11 +302,34 @@
 ## 算法定制
 
 ### 创建算法模块
+单击页面左侧导航栏“算法定制”，系统跳转到“算法定制”界面。
+![](/user_guide/fig/fig_33.png)
 
+算法定制是指用户可以选择R、Python2.7、Python3.6等语言来编写轻量级应用分析模块，用户可根据需求选择语言。
 
+1. 单击“新建”，弹出“新建模块”对话框，填写名称、描述，单击“确定”，系统跳转到算法编辑页面。
+    ![](/user_guide/fig/fig_34.png)
 
-
-
+<table>
+   <tr>
+      <td>配置项</td>
+      <td colspan="2">说明</td>
+   </tr>
+   <tr>
+      <td>名称</td>
+      <td colspan="2">分析模块的名称。</td>
+   </tr>
+   <tr>
+      <td>选择镜像</td>
+      <td>模块运行的依赖环境</td>
+      <td><p>minimal_python：仅包含python标准库。</p><p>zetdata_troy_python：除包含python标准库外，还引入了Pandas、Numpy、Sklearn等扩展库</p></td>
+   </tr>>
+   <tr>
+      <td>描述</td>
+      <td colspan="2">对该分析模块的简要描述。</td>
+   </tr>
+</table>
+   
 
 
 
