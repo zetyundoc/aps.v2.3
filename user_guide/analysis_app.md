@@ -764,13 +764,15 @@ Zeppelin为其每个用户都创建了一个后端用户，用户名为“AD_<Ze
 
         %hive
         LOAD DATA INPATH '/tmp/stock_data.csv' INTO TABLE             zet.stock_everydate_detail4  PARTITION (dt='201312');
-use zet;
+        use zet;
 
-select * from zet.stock_everydate_detail4 limit 10;
+        select * from zet.stock_everydate_detail4 limit 10;
 
+4. 单击段落右上角的![](/user_guide/icon/run.png)运行代码，显示结果如下所示：
 
+![](/user_guide/fig/fig_62.png)
 
-
+    代码成功运行后，以表格的形式展示表的前10行数据。也可以在hive解释器中执行其它Hive SQL对数据进行高效的查询和探查。
 
 
 
