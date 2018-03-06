@@ -624,7 +624,56 @@ Zeppelin笔记本由段落组成，即笔记本可以看作是一个段落容器
 在笔记本顶部是一个包含显示命令以及配置、安全性和显示选项的工具栏。
 ![](/user_guide/fig/fig_88.png)
 
+工具栏按钮的作用如下所示：
+* 按顺序执行所有段落
+* 隐藏/显示Code Section
+* 隐藏/显示Result Section
+* 清除所有段落的Result Section
+* 克隆当前笔记本
+* 将当前笔记本导出为JSON文件
+* 切换到所有者模式
 
+### Zeppelin解释器
+Zeppelin解释器是一款插件，可让Zeppelin用户使用特定的语言/数据处理后端。例如，要在Zeppelin中使用Scala代码，您需要%spark解释器。
+单击笔记本工具栏右侧的齿轮图标，可以查看Zeppelin已绑定的解释器，如下图所示：
+![](/user_guide/fig/fig_54.png)
+
+### Zeppelin基本操作
+
+#### 获取Keytab
+在APS中，通过解释器的形式将语言和数据处理后端插入到Zeppelin中，而这些后端一般都部署在CDH集群中。出于安全考虑，Zeppelin在访问CDH资源时必须进行认证，在APS中，认证的过程通过Keytab来实现。即用户在通过Zeppelin操作CDH资源前，需要先确保其Keytab是有效的。
+1. 单击“用户中心”>“安全中心”，进入Keytab管理页面。
+2. 单击“重置”，重新获取Keytab。
+    系统显示类似如下信息时，说明当前用户获取的keytab是有效的。
+    ![](/user_guide/fig/fig_55.png)
+    
+    说明：当系统显示Keytab过期或失效时必须执行本步骤中的操作，否则会导致操作CDH集群资源失败。
+    
+#### 查看用户环境
+Zeppelin为其每个用户都创建了一个后端操作系统用户，用户名为“AD_<Zeppelin用户名>”，工作目录为/home/用户名，文件上传目录为“/home/用户名/data/upload”。
+1. 选择“服务”>“分析应用”>“交互探索”，系统显示Zeppelin登录页面。
+2. 输入用户名和密码登录Zeppelin。
+3. 在Zeppelin登录首页单击“Create new note”，在对话框中输入note名称“User environment”并单击“创建”。
+    Zeppelin完成创建后会显示该note的编辑页面。
+4. 在第一个段落中使用shell解释器查看用户环境，如下图所示。
+    ![](/user_guide/fig/fig_56.png)
+
+#### 了解用户Python环境
+Zeppelin为每个用户提供了默认的Python执行环境，当默认Python环境的包不满足用户的需求时，用户可以使用pip从远程仓库中安装需要的外部包。
+
+1. 选择“服务”>“分析应用”>“交互探索”，系统显示Zeppelin登录页面。
+2. 输入用户名和密码登录Zeppelin。
+3. 在Zeppelin登录首页单击“Create new note”，在对话框中输入note名称“Python environment”并单击“创建”。
+    Zeppelin完成创建后会显示该note的编辑页面。
+4. 在第一个段落中使用shell解释器查看Python环境，如下图所示。
+    ![](/user_guide/fig/fig_57.png)
+    上图中显示了查看Python版本、Python执行环境以及已安装包的命令以及执行结果。
+    
+    当“pip list”的结果中缺少用户所需的Python包时，可以通过如下命令进行安装：
+    
+        pip install scikit-learn -i http://192.168.1.87:18088/simple --trusted-host 192.168.1.87
+    
+    上述命令表示从仓库http://192.168.1.87:18088/simple中安装scikit-learn包，请根据实际情况修改所需的包名以及仓库地址。
 
 
 
