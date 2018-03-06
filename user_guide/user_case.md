@@ -26,6 +26,7 @@
     搜索kmeansdemo1数据模块后单击回车，将数据模块kmeansdemo1拖曳到画布中。
     ![](/user_guide/fig/fig_70.png)
 3. 下载并加载数据。
+
     i. 搜索datasource_downloader分析模块后单击回车，拖曳分析模块datasource_downloader1到画布中实现下载数据到本地的功能。连接kmeansdemo1输出参数和datasource_downloader1的输入参数。
     ![](/user_guide/fig/fig_71.png)
     ii. 搜索load_csv分析模块后单击回车，拖曳分析模块load_csv1到画布中实现数据加载功能。连接datasource_downloader1输出参数和load_csv1的输入参数。
@@ -34,6 +35,7 @@
     ![](/user_guide/fig/fig_73.png)
     
 4. 添加聚类分析算法模块，展现聚类分析结果。
+
     i. 搜索kmeans分析模块后单击回车，拖曳分析模块kmeans1到画布中实现聚类分析算法。连接load_csv1输出参数和kmeans1的输入参数。
     ![](/user_guide/fig/fig_74.png)
     ii. 拖拽分析模块FormShow1、Visual1和FormShow1三个模块到画布中展示聚类分析结果。Kmeans1有四个输出参数，分别为分类类别展示、模型可视化、轮廓系数和簇个数评估、聚类畸变。
@@ -49,6 +51,7 @@
       数据应用运行成功后，在任务列表里可查看到相应的数据应用运行结果。
       
       单击“任务列表”查看任务名称为kmeans的任务，单击名称进入kmeans运行结果。
+      
      i. 在 “运行状态”页签找到第一个formshow1模块，鼠标滑过模块出现“+”时，单击“+”后，出现![](/user_guide/icon/link.png)图标。
      ![](/user_guide/fig/fig_78.png)
      单击![](/user_guide/icon/link.png)图标进入相应分析模块的输出界面。
