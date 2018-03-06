@@ -323,15 +323,49 @@
       <td>选择镜像</td>
       <td>模块运行的依赖环境</td>
       <td><p>minimal_python：仅包含python标准库。</p><p>zetdata_troy_python：除包含python标准库外，还引入了Pandas、Numpy、Sklearn等扩展库</p></td>
-   </tr>>
+   </tr>
    <tr>
       <td>描述</td>
       <td colspan="2">对该分析模块的简要描述。</td>
    </tr>
 </table>
    
+2.填写完成后单击“确定”，系统跳转到算法编辑页面，支持用户自定义开发模块。
 
+如下所示为一个Python语言算法定制的样例，在“文件管理”区域，“run.py”是由用户创建并编写的代码文件外，其它文件都是系统自动生成的文件。
+![](/user_guide/fig/fig_35.png)
 
+算法编辑页面主要分为四个区域：
+<table>
+   <tr>
+      <td>区域划分</td>
+      <td colspan="2">说明</td>
+   </tr>
+   <tr>
+      <td>文件管理</td>
+      <td>文件管理下的文件为算法程序文件，为系统自动生成的标准文件。文件列表中默认只有系统文件夹和文件，文件夹input和output，文件有spec.json、main.py（ main.R）、global.json、example、dependencies和readme.md，除readme.md外不可编辑</td>
+     <td><li>Input下的文件存放测试时上传的文件，必须先在模块设置中定义“输入”然后再上传文件，Input下的文件个数不能超过定义的“输入”的个数。</li>
+<li>Output文件夹下的文件是测试通过后输出的文件，默认为空；</li>
+<li>spec.json文件：记录了算法的参数、输入、输出、私有、类型、版本、描述、名称和标签的信息，以及cmd信息；</li>
+<li>main.py(main.R)用来记录runtime、CMD和entrypoint的信息；初始值为空，点击测试或者发布后才会有值；</li>
+<li>Example文件：为静态文件，提供模块引用示例且内容不允许修改；</li>
+<li>dependencies记录安装的程序包信息，初始信息为空；</li>
+<li>readme.md为文件记录算法的说明，可以进行编辑内容，重命名或者删除。</li></td> 
+   </tr>
+   <tr>
+      <td>模块设置</td>
+      <td>可设置模块的参数、输入和输出，还支持上传和下载R/Ptyhon程序包。</td>
+      <td>R在合法范围内可以输入任意值，但是R程序都按照字符串处理；Python支持三种参数类型：string、float、integer</td>
+   </tr>
+   <tr>
+      <td>代码编辑区</td>
+      <td colspan="2">分析模块的代码设计，支持代码高亮等。</td>
+   </tr>
+      <tr>
+      <td>测试调试区</td>
+      <td colspan="2">测试调试运行结果展示。</td>
+   </tr>
+</table>
 
 
 
