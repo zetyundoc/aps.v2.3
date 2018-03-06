@@ -469,7 +469,7 @@
           f.close
           f_r.close()
        
-       说明：读取的文件必须是在当前用户的工作空间下的，即路径“/mnt/nfsfile/userdata/username@MCIPT.COM/upload/”下的文件，其中username应使用实际的用户名替换。
+     说明：读取的文件必须是在当前用户的工作空间下的，即路径“/mnt/nfsfile/userdata/username@MCIPT.COM/upload/”下的文件，其中username应使用实际的用户名替换。
   
 * 读取HDFS的Python代码示例
     - 场景说明：在Python中，可以使用OS模块来执行操作系统命令，从而完成对HDFS上文件的读取操作。
