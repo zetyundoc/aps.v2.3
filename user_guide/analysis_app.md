@@ -679,14 +679,96 @@ Zeppelin为每个用户提供了默认的Python执行环境，当默认Python环
 ### R语言统计分析示例
 #### 场景说明
 本节使用Zeppelin的R解释器实现一个文本文件“u.user”包含的人员的职业统计分析。在该文本文件中共包含943条记录，每条记录分别由“序号”、“年龄”、“性别”、“职业”和“邮编”组成，不同字段之间使用“|”进行分割，部分样例数据如下所示：
-              1|24|M|technician|85711
-              2|53|F|other|94043
-              3|23|M|writer|32067
-              4|24|M|technician|43537
-              5|33|F|other|15213
+             
+    1|24|M|technician|85711
+    2|53|F|other|94043
+    3|23|M|writer|32067
+    4|24|M|technician|43537
+    5|33|F|other|15213
 
 #### 上传并查看文件
 Zeppelin为其每个用户都创建了一个后端用户，用户名为“AD_<Zeppelin用户名>”，工作目录为/home/用户名，文件上传目录为“/home/用户名/data/upload”。
+
+1. 选择“服务”>“分析应用”>“交互探索”，系统显示Zeppelin登录页面。
+2. 输入用户名和密码登录Zeppelin。
+3. 在Zeppelin登录首页单击“Create new note”，在对话框中输入note名称“Base R in Apache Zepplin”并单击“创建”。
+    Zeppelin完成创建后会显示该note的编辑页面。
+4. 单击页面右上角的上传文件，将本地文件u.user上传到Zeppelin服务器。
+    说明：在Zeppelin中，每个用户都有其独立的工作环境，每个用户上传的文件保存在其家目录下的“data/upload”目录下。
+5. 在第一个段落中使用shell解释器查看文件是否成功上传。
+![](/user_guide/fig/fig_58.png)
+
+#### 编辑并运行代码
+1. 新建一个段落，并输入如下代码：
+     
+       %spark
+       val user_data = sc.textFile("data/upload/u.user")
+       user_data.first()
+       val user_fields = user_data.map(line => line.split("\\|"))
+       val num_users = user_fields.map(fields => fields(0)).count()
+       val num_genders = user_fields.map(fields => fields(2)).distinct().count()
+       val num_occupations = user_fields.map(fields => fields(3)).distinct().count()
+       val num_zipcodes = user_fields.map(fields => fields(4)).distinct().count()
+       val count_by_occupation = user_fields.map(fields => (fields(3),1)).reduceByKey(_ + _).collect().toList.sortBy(_._2).map(line => line._1+"\t"+line._2).toList.mkString("\n")
+       println("%table occupation\tsize\n" + count_by_occupation)
+
+2. 单击段落右上角![](/user_guide/icon/run.png)运行代码，显示结果如下所示：
+![](/user_guide/fig/fig_59.png)
+
+    代码成功运行后，默认以饼图的形式展示结果，通过单击Result Section上的操作按钮，可以将结果以不同的形式展示，如下为列表样式：
+![](/user_guide/fig/fig_60.png)
+
+### Hive建表示例
+####场景说明
+本节使用Zeppelin的sh解释器和hive解释器将一个本地文件上传到HDFS，在Hive中创建数据表并将数据文件加载到Hive表中，从而可以通过Hive SQL进行数据探查，避免开发繁琐的MapReduce程序。本节示例使用的文本文件样例如下所示，每条记录由“股票名”、“股票类型”、“交易时间”、“价格”等字段组成，不同字段之间由“,”分割。
+          
+          sh600000,JRHY,2013-12-26 15:00:07,9.09,0.01,0,0,1
+          sh600000,JRHY,2013-12-26 15:00:02,9.08,-0.01,40,36320,-1
+          sh600000,JRHY,2013-12-26 14:59:57,9.09,0.0,718,652734,1
+
+#### 上传并查看文件
+Zeppelin为其每个用户都创建了一个后端用户，用户名为“AD_<Zeppelin用户名>”，工作目录为/home/用户名，文件上传目录为“/home/用户名/data/upload”。
+
+1. 选择“服务”>“分析应用”>“交互探索”，系统显示Zeppelin登录页面。
+2. 输入用户名和密码登录Zeppelin。
+3. 在Zeppelin登录首页单击“Create new note”，在对话框中输入note名称“File_import_to_Hive”并单击“创建”。
+    Zeppelin完成创建后会显示该note的编辑页面。
+4. 单击页面右上角的上传文件，将本地文件stock_data.csv上传到Zeppelin服务器。
+    说明：在Zeppelin中，每个用户都有其独立的工作环境，每个用户上传的文件保存在其家目录下的“data/upload”目录下。
+5. 在第一个段落中使用shell解释器查看文件是否成功上传。
+![](/user_guide/fig/fig_61.png)
+
+#### 编辑并运行代码
+1. 新建一个段落，并输入如下代码，将文本文件上传到HDFS的/tmp目录下：
+    
+         %sh
+         hdfs dfs -put data/upload/stock_data.csv /tmp
+2. 新建一个段落，并输入如下代码，在Hive中创建数据库与表结构：
+
+        %hive
+        CREATE DATABASE  zet;
+        %hive
+        create table zet.stock_everydate_detail4
+        (
+        stock_name string,
+        stock_type string,
+        trans_time string,
+        price double,
+up_or_down_price double,
+trans_count bigint,
+trans_nmoney bigint,
+trans_type string
+)
+PARTITIONED BY(dt String) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',';
+
+
+
+
+
+
+
+
+
 
 
 
