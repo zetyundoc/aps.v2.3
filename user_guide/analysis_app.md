@@ -447,8 +447,34 @@
 模块发布成功后，会自动添加到分析模块库中，此时算法定制界面不再呈现该记录。
 ![](/user_guide/fig/fig_44.png)
 
+### 算法定制示例
+在算法过程中，以文件作为其输入和输出。定制的算法模块发布后，在工作流中，从其上游模块中接收数据或向下游模块输出数据，这类数据是动态的，在工作流运行过程中流入或流出分析模块；此外，也可能用到静态的数据，例如在算法定制中可以引用保存在Zeppelin个人工作目录下的数据，也可以引用保存在HDFS上的数据，这类算法在发布后，在工作流运行时，依然从引用位置读取文件。这种静态文件的方式，可以用于依赖于大量数据的模型训练中，您可以更新训练数据集，但只要数据集的路径和文件名保持不变，则工作流在下次运行时将使用最新的数据集完成模型的训练。
 
+说明：对于使用Zeppelin个人工作目录下的数据的算法，应设置为私人模块，否则若其他开发人员在工作流中引用了该模块，可能因为没有读取原开发者工作目录下数据的权限而导致整个工作流运行失败。
 
+* 读取Zeppelin个人工作空间的Python代码示例
+    - 场景说明：当前登录用户为“testuser”，在Zeppelin中其个人工作空间目录为“/mnt/nfsfile/userdata/testuser@MCIPT.COM/upload/”，如下示例给出了读写个人工作空间目录的代码样例。
+    - 代码样例：
+          #!/usr/bin/env python
+          # -*- coding: utf-8 -*-
+          def main(params, inputs, outputs):
+          #如下代码向当前用户的工作空间目录的文件中写入内容
+          f_w = open('/mnt/nfsfile/userdata/testuser@MCIPT.COM/upload/testfileA.txt','w+')
+          f_w.write('Hello，this is a test.')
+          f_w.close()
+          #如下代码从当前用户的工作空间目录的文件中读取内容
+          f_r = open('/mnt/nfsfile/userdata/testuser@MCIPT.COM/upload/csvfile.csv','r+')
+          f = open('testfileB','w')
+          f.write(f_r.read())
+          f.close
+          f_r.close()
+       
+       说明：读取的文件必须是在当前用户的工作空间下的，即路径“/mnt/nfsfile/userdata/username@MCIPT.COM/upload/”下的文件，其中username应使用实际的用户名替换。
+  
+* 读取HDFS的Python代码示例
+    - 场景说明：在Python中，可以使用OS模块来执行操作系统命令，从而完成对HDFS上文件的读取操作。
+    - 代码样例：
+          
 
 
 
