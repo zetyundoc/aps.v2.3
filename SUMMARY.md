@@ -25,6 +25,16 @@
 * [用户手册](user_guide.md)
   * [快速入门](user_guide/quick_start.md)
   * [分析应用](user_guide/analysis_app.md)
+    * [数据应用管理](user_guide/01_data_app.md)
+    * [数据模块管理](user_guide/02_data_model.md)
+    * [分析模块管理](user_guide/03_analysis_model.md)
+    * [算法定制](user_guide/04_algor_customize.md)
+    * [任务列表管理](user_guide/05_task_list.md)
+    * [预定计划管理](user_guide/06_scheduled_plan.md)
+    * [模型仓库管理](user_guide/07_model_repo.md)
+    * [交互探索](user_guide/08_inteactive_exploration.md)
   * [用户中心](user_guide/user_center.md)
   * [数据应用示例](user_guide/user_case.md)
+
+
 
