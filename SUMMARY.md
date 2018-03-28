@@ -35,7 +35,3 @@
   * [用户中心](user_guide/user_center.md)
   * [数据应用示例](user_guide/user_case.md)
 
-## 大数据平台洞察分析项目标准模型
-
-* 大数据平台洞察分析项目标准模型
-
